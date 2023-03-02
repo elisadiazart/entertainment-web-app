@@ -1,98 +1,179 @@
 .section{
+    margin-bottom: 4rem;
     &__title{
         font-weight: 300;
         color: white;
         font-size: 2rem;
+        margin: 0;
+        margin-bottom: 1rem;
+
+        &-container{
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding-right: 2.5rem;
+        }
     }
 
-    &__container--slider{
-        display: flex;
-        gap: 3rem;
-        overflow-x: scroll;
-        scrollbar-color: #5A698F #5a698f3f;
-        scrollbar-width: thik;
-
-        &::-webkit-scrollbar{
-            height: 12px;
+    &__see-more{
+        color: #69789e;
+        text-transform: uppercase;
+        &:hover{
+            text-decoration: underline;
         }
+    }
 
-        &::-webkit-scrollbar-track {
-            background-color: #5a698f3f;
-            border-radius: 50px;
+    &__container{
+        width: calc(100vw - 200px);
+        display: grid;
+        gap: 2.2rem;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        &--slider{
+            width: 100%;
+            display: flex;
+            gap: 3rem;
+            overflow-x: scroll;
+            scrollbar-color: #e63b3b #5a698f3f;
+            scrollbar-width: thik;
+    
+            &::-webkit-scrollbar{
+                height: 12px;
+            }
+    
+            &::-webkit-scrollbar-track {
+                background-color: #5a698f3f;
+                border-radius: 50px;
+            }
+    
+            &::-webkit-scrollbar-thumb{
+                background-color: #e63b3b;
+                border-radius: 50px;
+            }
         }
-
-        &::-webkit-scrollbar-thumb{
-            background-color: #5A698F;
-            border-radius: 50px;
-        }
-
-
     }
 
     &__item{
-        flex-shrink: 0;
-        width: 450px;
-        height: 250px;
+        min-width: 250px;
+        min-height: 150px;
         background-image: url(https://image.tmdb.org/t/p/original//irwQcdjwtjLnaA0iErabab9PrmG.jpg);
         background-repeat: no-repeat;
         background-size: 100%;
         border-radius: 10px;
-        padding-top: 170px;
-        position: relative;
-        &::after{
-            content: '';
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            position: absolute;
-            top: 0;
-            border-radius: 10px;
-        
+        margin-bottom: 1rem;
+
+        &--bottom-part{
+            background-position: center center;
         }
 
+       &__container--bottom-part{
+        grid-column: 1/3;
+
+        &--second{
+            grid-column: 3/5;
+        }
+       }
+
+        &--slider{
+            flex-shrink: 0;
+            width: 450px;
+            height: 250px;
+            background-image: url(https://image.tmdb.org/t/p/original//irwQcdjwtjLnaA0iErabab9PrmG.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            border-radius: 10px;
+            padding-top: 160px;
+            position: relative;
+            cursor: pointer;
+            &::after{
+                content: '';
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                position: absolute;
+                top: 0;
+                border-radius: 10px;
+            
+            }
+    }
+
         &-type{
+            position: relative;
             display: flex;
             align-items: center;
             gap: .3rem;
-            position: relative;
-            color: white;
+            &--slider{
+                display: flex;
+                align-items: center;
+                gap: .3rem;
+                position: relative;
+                color: white;
+                &::after{
+                    content: '';
+                    width: 3px;
+                    height: 3px;
+                    background-color: white;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: -1rem;
+                }
+            }
             &::after{
                 content: '';
-                width: 5px;
-                height: 5px;
+                width: 2px;
+                height: 2px;
                 background-color: white;
                 border-radius: 50%;
                 position: absolute;
-                left: -.7rem;
+                left: -.9rem;
             }
         }
     }
 
     &__data{
-        position: relative;
-        margin-left: 1.5rem;
-        width: 100%;
+        color: #d5dcee;
         display: flex;
-        gap: 2rem;
-        color: white;
-        z-index: 1;
-        margin-bottom: .5rem;
+        gap: 1.8rem;
+        font-size: .9rem;
+        padding-left: .5rem;
+        margin-bottom: .6rem;
+        align-items: center;
+        &--slider{
+            position: relative;
+            margin-left: 2.5rem;
+            width: 100%;
+            display: flex;
+            gap: 2rem;
+            color: white;
+            z-index: 1;
+            margin-bottom: .5rem;
+        }
     }
 
     &__bookmark-icon{
-        width: 15px;
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        z-index: 1;
+        &--slider{
+            width: 15px;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 1;
+            cursor: pointer;
+        }
     }
 
     &__item-title{
-        position: relative;
         color: white;
-        z-index: 1;
-        margin-left: 1.5rem;
-        font-size: 1.4rem;
+        padding-left: .5rem;
+        font-size: 1.3rem;
+
+        &--slider{
+            position: relative;
+            color: white;
+            z-index: 1;
+            margin-left: 2.5rem;
+            font-size: 1.4rem;
+        }
     }
     
 
