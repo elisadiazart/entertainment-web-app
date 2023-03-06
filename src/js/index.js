@@ -3,7 +3,6 @@ import '../scss/styles.scss';
 
 const sliderElement = document.getElementById('slider');
 let mediaFavoritesArray = [];
-
 const fetchData = async url => {
   const response = await fetch(url);
   const data = await response.json();
@@ -34,6 +33,7 @@ const printSlider = async () => {
       'section__bookmark-icon-container--slider'
     );
     newBookmarkIconContainer.dataset.id = movie.id;
+    newBookmarkIconContainer.dataset.checked = false;
     const newBookmarkIcon = document.createElement('img');
     newBookmarkIcon.classList.add('section__bookmark-icon--slider');
     newBookmarkIcon.src = 'assets/icon-bookmark-empty.svg';
@@ -84,6 +84,7 @@ const printSection = async (url, id) => {
     const newBookmarkIconContainer = document.createElement('div');
     newBookmarkIconContainer.classList.add('section__bookmark-icon-container');
     newBookmarkIconContainer.dataset.id = movie.id;
+    newBookmarkIconContainer.dataset.checked = false;
     const newBookmarkIcon = document.createElement('img');
     newBookmarkIcon.classList.add('section__bookmark-icon');
     newBookmarkIcon.src = 'assets/icon-bookmark-empty.svg';
@@ -151,7 +152,16 @@ document.body.addEventListener('click', e => {
     e.target.classList.contains('section__bookmark-icon-container--slider') ||
     e.target.classList.contains('section__bookmark-icon-container')
   )
-    mediaFavoritesArray.push(e.target.dataset.id);
-  e.target.children[0].src = 'assets/icon-bookmark-full.svg';
-  console.log(mediaFavoritesArray);
+    
+    if (e.target.dataset.checked === 'false') {
+      e.target.children[0].src = 'assets/icon-bookmark-full.svg';
+      e.target.dataset.checked = true
+      mediaFavoritesArray.push(e.target.dataset.id);
+    }
+    else {
+      e.target.children[0].src = 'assets/icon-bookmark-empty.svg';
+      e.target.dataset.checked = false
+    }
+    console.log(mediaFavoritesArray);
+    
 });
