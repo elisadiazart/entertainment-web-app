@@ -20,10 +20,17 @@
         gap: 3rem;
         display: flex;
         flex-direction: column;
+        cursor: pointer;
     }
 
 
     &__img--user{
         padding: .8rem;
+        cursor: pointer;
+        transition: transform .2s;
+
+        &:hover{
+            transform: scale(120%);
+        }
     }
 }

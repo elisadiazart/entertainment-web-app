@@ -152,5 +152,6 @@ document.body.addEventListener('click', e => {
     e.target.classList.contains('section__bookmark-icon-container')
   )
     mediaFavoritesArray.push(e.target.dataset.id);
+  e.target.children[0].src = 'assets/icon-bookmark-full.svg';
   console.log(mediaFavoritesArray);
 });
