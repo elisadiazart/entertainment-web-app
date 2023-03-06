@@ -3,6 +3,11 @@ import '../scss/styles.scss';
 
 const sliderElement = document.getElementById('slider');
 let mediaFavoritesArray = [];
+let favorites = [];
+const LS = localStorage
+
+
+
 const fetchData = async url => {
   const response = await fetch(url);
   const data = await response.json();
@@ -146,22 +151,41 @@ printSection(URLS.topRatedMovied, 'topRated');
 printSection(URLS.popularTv, 'popularTv');
 printSlider();
 
+
+const updateLocalStorage = () => {
+  LS.setItem('favorites', JSON.stringify(mediaFavoritesArray));
+};
+
+const getLocalStorage = () => {
+  const localFavourites = LS.getItem('favorites');
+  if (localFavourites) {
+    favorites = JSON.parse(localFavourites);
+  } else {
+    localStorage.setItem('favorites', JSON.stringify([]));
+  }
+};
+
 document.body.addEventListener('click', e => {
-  console.log(e.target);
   if (
     e.target.classList.contains('section__bookmark-icon-container--slider') ||
     e.target.classList.contains('section__bookmark-icon-container')
-  )
-    
+  ){
     if (e.target.dataset.checked === 'false') {
       e.target.children[0].src = 'assets/icon-bookmark-full.svg';
       e.target.dataset.checked = true
-      mediaFavoritesArray.push(e.target.dataset.id);
+      if(mediaFavoritesArray.includes(e.target.dataset.id))return
+      else mediaFavoritesArray.push(e.target.dataset.id);
     }
     else {
       e.target.children[0].src = 'assets/icon-bookmark-empty.svg';
       e.target.dataset.checked = false
+      mediaFavoritesArray=mediaFavoritesArray.filter(item => item !== e.target.dataset.id);
     }
-    console.log(mediaFavoritesArray);
-    
+  }
+    updateLocalStorage()
+    getLocalStorage()
 });
+
+
+getLocalStorage()
+
