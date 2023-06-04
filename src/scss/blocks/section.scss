@@ -62,13 +62,13 @@
 
     &__item{
         min-width: 100%;
-        min-height: 120px;
+        min-height: 150px;
         height: auto;
         background-image: url(https://image.tmdb.org/t/p/original//irwQcdjwtjLnaA0iErabab9PrmG.jpg);
         background-repeat: no-repeat;
         background-size:cover;
         object-fit: fill;
-        background-position: center center;
+        background-position: top center;
         border-radius: 10px;
         margin-bottom: 1rem;
         transition: filter .2s;
@@ -86,7 +86,8 @@
         }
 
         &--bottom-part{
-            background-position: center center;
+            background-position: top -100px  center;
+            min-height: 190px;
         }
 
        &__container--bottom-part{
